@@ -26,7 +26,8 @@ SECRET_KEY = 'lqsd@klv^rm6uy3*lqbloxtct1t4h^&1&nxb1lo3s9qj_&9(lu'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+#重载系统的用户，让UserProfile生效
+AUTH_USER_MODEL = 'xuanzuo.User'
 
 # Application definition
 
