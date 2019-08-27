@@ -124,3 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+APP_ID = 'wx3ed7fffce971e131'
+APP_KEY = '47bf0306433596aa25ad1401de5acc1f'
