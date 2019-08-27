@@ -38,7 +38,7 @@ class WechatLoginView(APIView):
             username = request.data.get('nickname')
             print("username")
 
-            print(username)
+            print(request.data)
             sex = request.data.get('sex')
             avatar = request.data.get('avatar')
 
