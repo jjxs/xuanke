@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 uwsgi*
+migrations
 # C extensions
 *.so
 

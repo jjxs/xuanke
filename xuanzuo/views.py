@@ -36,8 +36,13 @@ class WechatLoginView(APIView):
         except Exception:
             # 微信用户第一次登陆,新建用户
             username = request.data.get('nickname')
+            print("username")
+
+            print(username)
             sex = request.data.get('sex')
             avatar = request.data.get('avatar')
+
+
             user = User.objects.create(username=username, sex=sex, avatar=avatar)
             user.set_password(openid)
 
