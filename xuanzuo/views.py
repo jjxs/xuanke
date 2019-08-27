@@ -40,7 +40,7 @@ class WechatLoginView(APIView):
             sex = request.data.get('gender')
             avatar = request.data.get('avatarUrl')
 
-            user = User.objects.create(username=username, sex=sex, avatar=avatar)
+            user = User.objects.create(username=username, sex=sex, avatar=avatar, openid=openid)
             user.set_password(openid)
 
         # 手动签发jwt
