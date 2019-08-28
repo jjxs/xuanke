@@ -60,10 +60,14 @@ class WechatLoginView(APIView):
 
         return Response(resp_data)
 
-class saveSeatApiView(APIView):
-    """
+class SeatApiView(APIView):
 
-    """
+    def get(self, request):
+        result = dict(seatArr="", name="")
+        metting_obj = Metting.objects.last()
+        result["seatArr"] = metting_obj.result
+        result["mettingName"] = metting_obj.name
+        return Response(result)
 
     def post(self, request):
 
