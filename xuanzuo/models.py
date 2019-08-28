@@ -23,9 +23,6 @@ class User(AbstractUser):
         verbose_name_plural = verbose_name
 
 
-
-
-
 class UserMetting(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     metting = models.ForeignKey(Metting, on_delete=models.CASCADE)
