@@ -10,6 +10,7 @@ from rest_framework_jwt.settings import api_settings
 from .models import Metting, UserMetting
 User = get_user_model()
 import json
+from rest_framework import serializers
 # Create your views here.
 class WechatLoginView(APIView):
     """
@@ -60,11 +61,18 @@ class WechatLoginView(APIView):
 
         return Response(resp_data)
 
+class MettingSerializer(serializers.ModelField):
+    def get_time(self, obj):
+        if obj.time is not None:
+            # obj.time
+            return obj.time
+        return ''
 
 class SeatListApiView(APIView):
     def get(self, request):
-        result = Metting.objects.all().values()
-        return Response(result)
+        # result = Metting.objects.all().values()
+        serializer = MettingSerializer(Metting.objects.all(), many=True)
+        return Response(serializer.data)
 
 class SeatApiView(APIView):
 
