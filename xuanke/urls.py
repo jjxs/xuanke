@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('member/login', WechatLoginView.as_view()),
     path('seat', SeatApiView.as_view()),
-    # path('seats', SeatApiView.as_view())
 ]
