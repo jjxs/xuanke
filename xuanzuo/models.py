@@ -18,5 +18,5 @@ class User(AbstractUser):
         verbose_name_plural = verbose_name
 
 class Metting(models.Model):
-    mettingName = models.CharField(max_length=100, verbose_name="会议名称")
-    result = models.CharField(max_length=500, verbose_name="结果集")
+    mettingName = models.CharField(max_length=100, verbose_name="会议名称", null=True, blank=True)
+    result = models.CharField(max_length=500, verbose_name="结果集", null=True, blank=True,)

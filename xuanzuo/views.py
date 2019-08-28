@@ -7,6 +7,7 @@ import requests
 import json
 from django.contrib.auth import get_user_model
 from rest_framework_jwt.settings import api_settings
+from .models import Metting
 User = get_user_model()
 
 # Create your views here.
@@ -58,3 +59,32 @@ class WechatLoginView(APIView):
         }
 
         return Response(resp_data)
+
+class saveSeatApiView(APIView):
+    """
+
+    """
+
+    def post(self, request):
+
+        seatArr = requests.data.get('seatArr')
+        user_id = requests.data.get('user_id')
+
+        metting_obj = Metting.objects.last()
+        try:
+            user_obj = User.objects.get(pk=int(user_id))
+        except User.DoesNotExist:
+            return Response({'message': '没有取到用户信息'}, status=status.HTTP_503)
+
+        if user_obj.filter(metting=metting_obj.id):
+            return Response({'message': '座位已经被使用'}, status=status.HTTP_503)
+
+
+        user_obj.metting.filter()
+        user_obj.metting.add(metting_obj)
+        user_obj.save()
+
+        metting_obj.result = seatArr
+        metting_obj.save()
+
+        return Response({'message': '占座成功'})
