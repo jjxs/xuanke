@@ -20,5 +20,5 @@ from xuanzuo.views import WechatLoginView, saveSeatApiView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('member/login', WechatLoginView.as_view()),
-    path('saveSeat/', saveSeatApiView.as_view())
+    path('saveSeat', saveSeatApiView.as_view())
 ]
