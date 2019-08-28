@@ -6,7 +6,7 @@ import datetime
 class Metting(models.Model):
     mettingName = models.CharField(max_length=100, verbose_name="会议名称", null=True, blank=True)
     result = models.CharField(max_length=5000, verbose_name="结果集", null=True, blank=True,)
-    time = models.DateField(default=datetime.datetime)
+    time = models.DateField(null=True, blank=True)
 
 class User(AbstractUser):
     USER_GENDER_CHOICES = (
