@@ -24,8 +24,8 @@ class Metting(models.Model):
 
 
 class UserMetting(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE())
-    metting = models.ForeignKey(Metting, on_delete=models.CASCADE())
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    metting = models.ForeignKey(Metting, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'user_metting_relatinship'
