@@ -80,7 +80,7 @@ class saveSeatApiView(APIView):
             return Response({'message': '座位已经被使用'}, status=status.HTTP_503)
 
 
-        user_obj.metting.filter()
+        user_obj.metting.filter(metting_id=metting_obj.id)
         user_obj.metting.add(metting_obj)
         user_obj.save()
 
