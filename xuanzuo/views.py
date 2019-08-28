@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 from rest_framework_jwt.settings import api_settings
 from .models import Metting, UserMetting
 User = get_user_model()
-
+import json
 # Create your views here.
 class WechatLoginView(APIView):
     """
