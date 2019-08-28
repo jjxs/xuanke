@@ -61,7 +61,7 @@ class WechatLoginView(APIView):
 
         return Response(resp_data)
 
-class MettingSerializer(serializers.ModelField):
+class MettingSerializer(serializers.ModelSerializer):
     def get_time(self, obj):
         if obj.time is not None:
             # obj.time
