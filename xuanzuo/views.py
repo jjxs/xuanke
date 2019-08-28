@@ -72,8 +72,9 @@ class SeatListApiView(APIView):
     def get(self, request):
         # result = Metting.objects.all().values()
         serializer = MettingSerializer(data=Metting.objects.all())
-        result = serializer.data
-        return Response(result)
+        if serializer.is_valid():
+            result = serializer.data
+            return Response(result)
 
 class SeatApiView(APIView):
 
