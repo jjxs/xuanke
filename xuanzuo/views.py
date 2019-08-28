@@ -67,8 +67,8 @@ class saveSeatApiView(APIView):
 
     def post(self, request):
 
-        seatArr = requests.data.get('seatArr')
-        user_id = requests.data.get('user_id')
+        seatArr = request.data.get('seatArr')
+        user_id = request.data.get('user_id')
 
         metting_obj = Metting.objects.last()
         try:
