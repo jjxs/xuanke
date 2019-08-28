@@ -75,8 +75,9 @@ class saveSeatApiView(APIView):
             user_obj = User.objects.get(pk=int(user_id))
         except User.DoesNotExist:
             return Response({'message': '没有取到用户信息'}, status=status.HTTP_503)
-
-        if user_obj.filter(metting_id=metting_obj.id):
+        print("11111")
+        print(user_obj.metting_user.all())
+        if user_obj.metting_user.filter(metting=metting_obj.id):
             return Response({'message': '座位已经被使用'}, status=status.HTTP_503)
 
         # metting_obj.metting_user.filter(user_id=user_id)
