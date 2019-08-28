@@ -67,6 +67,9 @@ class MettingSerializer(serializers.ModelSerializer):
             # obj.time
             return obj.time
         return ''
+    class Meta:
+        model = Metting
+        fields = "__all__"
 
 class SeatListApiView(APIView):
     def get(self, request):
