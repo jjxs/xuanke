@@ -96,14 +96,17 @@ class SeatListApiView(APIView):
 class SeatApiView(APIView):
 
     def get(self, request):
+        metting_id = request.query_params.get('id')
         result = dict(seatArr="", name="")
-        metting_obj = Metting.objects.last()
+        try:
+            metting_obj = Metting.objects.get(pk=metting_id)
+        except Metting.DoesNotExist:
+            return Response("该会议已被删除", status.HTTP_404_NOT_FOUND)
         result["seatArr"] = metting_obj.result
         result["name"] = metting_obj.mettingName
         return Response(result)
 
     def post(self, request):
-
         seatArr = request.data.get('seatArr')
         user_id = request.data.get('user_id')
 
