@@ -84,7 +84,7 @@ class MettingSerializer(serializers.ModelSerializer):
         return ret
     class Meta:
         model = Metting
-        fields = "__all__"
+        exclude  = ["result"]
 
 class SeatListApiView(APIView):
     def get(self, request):
@@ -97,13 +97,15 @@ class SeatApiView(APIView):
 
     def get(self, request):
         metting_id = request.query_params.get('id')
-        result = dict(seatArr="", name="")
+        result = dict(seatArr="", name="", time="")
         try:
             metting_obj = Metting.objects.get(pk=metting_id)
         except Metting.DoesNotExist:
             return Response("该会议已被删除", status.HTTP_404_NOT_FOUND)
         result["seatArr"] = metting_obj.result
         result["name"] = metting_obj.mettingName
+        result["time"] = metting_obj.time
+
         return Response(result)
 
     def post(self, request):
