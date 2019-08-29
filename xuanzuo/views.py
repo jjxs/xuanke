@@ -75,8 +75,9 @@ class MettingSerializer(serializers.ModelSerializer):
             6: '星期日',
         }
         ret['time'] = '未指定时间'
+        date = instance.time
         if instance.time is not None:
-            date = datetime.datetime.strptime(instance.time, datetime.datetime.strptime(str,'%Y-%m-%dT%H:%M:%SZ'))
+            # date = datetime.datetime.strptime(instance.time, datetime.datetime.strptime(str,'%Y-%m-%dT%H:%M:%SZ'))
             ret['time'] =  date.year +'-'+ date.month +'-'+ date.day +' '+ week_day[date.weekday()] + ' ' + date.hour+ ':'+date.minute+':'+date.second
         return ret
     class Meta:
