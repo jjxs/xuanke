@@ -10,6 +10,7 @@ from rest_framework_jwt.settings import api_settings
 from .models import Metting, UserMetting
 User = get_user_model()
 import json
+import datetime
 from rest_framework import serializers
 # Create your views here.
 class WechatLoginView(APIView):
@@ -63,9 +64,18 @@ class WechatLoginView(APIView):
 
 class MettingSerializer(serializers.ModelSerializer):
     def get_time(self, obj):
+        week_day = {
+            0: '星期一',
+            1: '星期二',
+            2: '星期三',
+            3: '星期四',
+            4: '星期五',
+            5: '星期六',
+            6: '星期日',
+        }
         if obj.time is not None:
-            # obj.time
-            return obj.time
+            date = datetime.datetime.strptime(obj.time, datetime.datetime.strptime(str,'%Y-%m-%dT%H:%M:%SZ'))
+            return date.year +'-'+ date.month +'-'+ date.day +' '+ week_day[date.weekday()] + ' ' + date.hour+ ':'+date.minute+':'+date.second
         return ''
     class Meta:
         model = Metting
