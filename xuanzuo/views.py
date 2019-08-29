@@ -97,23 +97,21 @@ class SeatApiView(APIView):
 
     def get(self, request):
         metting_id = request.query_params.get('id')
-        result = dict(seatArr="", name="", time="")
         try:
             serializers = MettingSerializer(Metting.objects.get(pk=metting_id), read_only=True)
         except Metting.DoesNotExist:
-            return Response("该会议已被删除", status.HTTP_404_NOT_FOUND)
-        # result["seatArr"] = metting_obj.result
-        # result["mettingName"] = metting_obj.mettingName
-        # result["time"] = metting_obj.time
-        serializers.data
+            return Response("该会议已删除", status.HTTP_404_NOT_FOUND)
 
         return Response(serializers.data)
 
     def post(self, request):
         seatArr = request.data.get('seatArr')
         user_id = request.data.get('user_id')
-
-        metting_obj = Metting.objects.last()
+        metting_id = request.data.get('id')
+        try:
+            metting_obj = Metting.objects.get(pk=metting_id)
+        except Metting.DoesNotExist:
+            return Response("该会议已删除", status.HTTP_404_NOT_FOUND)
         try:
             user_obj = User.objects.get(pk=int(user_id))
         except User.DoesNotExist:
