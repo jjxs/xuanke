@@ -80,7 +80,7 @@ class MettingSerializer(serializers.ModelSerializer):
             # date = datetime.datetime.strptime(instance.time, datetime.datetime.strptime(str,'%Y-%m-%dT%H:%M:%SZ'))
             ret['time'] =  str(date.year) +'-'+ str(date.month) +'-'+ str(date.day)\
                            +' '+ week_day[date.weekday()] + ' ' + str(date.hour)+ ':'+\
-                           str(date.minute)+':'+str(date.second)
+                           str(date.minute)
         return ret
     class Meta:
         model = Metting
