@@ -73,6 +73,8 @@ class MettingSerializer(serializers.ModelSerializer):
             5: '星期六',
             6: '星期日',
         }
+        print('aaa')
+        print(obj.time)
         if obj.time is not None:
             date = datetime.datetime.strptime(obj.time, datetime.datetime.strptime(str,'%Y-%m-%dT%H:%M:%SZ'))
             return date.year +'-'+ date.month +'-'+ date.day +' '+ week_day[date.weekday()] + ' ' + date.hour+ ':'+date.minute+':'+date.second
