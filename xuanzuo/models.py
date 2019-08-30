@@ -6,7 +6,8 @@ import datetime
 class Metting(models.Model):
     mettingName = models.CharField(max_length=100, verbose_name="会议名称", null=True, blank=True)
     result = models.CharField(max_length=5000, verbose_name="结果集", null=True, blank=True,)
-    time = models.DateTimeField(null=True, blank=True)
+    time = models.DateTimeField(null=True, blank=True, verbose_name="会议开始时间")
+    num = models.IntegerField(blank=True, null=True, verbose_name="座位数量", default=100)
 
     def __str__(self):
         return self.mettingName
