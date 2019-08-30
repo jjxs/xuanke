@@ -27,6 +27,6 @@ class User(AbstractUser):
 class UserMetting(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     metting = models.ForeignKey(Metting, on_delete=models.CASCADE)
-
+    seat_num = models.IntegerField(verbose_name="座位号")
     class Meta:
         db_table = 'user_metting_relatinship'

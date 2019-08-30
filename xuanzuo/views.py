@@ -108,6 +108,8 @@ class SeatApiView(APIView):
         seatArr = request.data.get('seatArr')
         user_id = request.data.get('user_id')
         metting_id = request.data.get('id')
+        seat_num = request.data.get('seat_num')
+
         try:
             metting_obj = Metting.objects.get(pk=metting_id)
         except Metting.DoesNotExist:
@@ -121,7 +123,7 @@ class SeatApiView(APIView):
         if UserMetting.objects.filter(user_id=int(user_id), metting_id=metting_obj.id):
             return Response({'message': '座位已经被使用'}, status=status.HTTP_504_GATEWAY_TIMEOUT)
 
-        UserMetting.objects.create(user=user_obj, metting=metting_obj)
+        UserMetting.objects.create(user=user_obj, metting=metting_obj, seat_num = int(seat_num))
 
         metting_obj.result = seatArr
         metting_obj.save()
