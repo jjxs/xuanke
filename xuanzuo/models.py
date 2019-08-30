@@ -7,7 +7,8 @@ class Metting(models.Model):
     mettingName = models.CharField(max_length=100, verbose_name="会议名称", null=True, blank=True)
     result = models.CharField(max_length=5000, verbose_name="结果集", null=True, blank=True,)
     time = models.DateTimeField(null=True, blank=True, verbose_name="会议开始时间")
-    num = models.IntegerField(blank=True, null=True, verbose_name="座位数量", default=100)
+    row = models.IntegerField(blank=True, null=True, verbose_name="横座位数量", default=10)
+    col = models.IntegerField(blank=True, null=True, verbose_name="纵座位数量", default=10)
 
     def __str__(self):
         return self.mettingName
