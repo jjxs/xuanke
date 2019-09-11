@@ -41,3 +41,5 @@ class UserMetting(models.Model):
     seat_num = models.IntegerField(verbose_name="座位号")
     class Meta:
         db_table = 'user_metting_relatinship'
+        verbose_name = '用户/会议'
+        verbose_name_plural = verbose_name
