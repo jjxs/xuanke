@@ -29,6 +29,7 @@ class ExportExcelMixin(object):
 @admin.register(UserMetting)
 class UserMettingAdmin(admin.ModelAdmin, ExportExcelMixin):
     fields = ('user', 'metting', 'seat_num')
+    list_display = ('user', 'metting', 'seat_num')
     search_fields = ('user', 'metting')
     list_filter = ('user', 'metting')
     actions = ['export_as_excel']
