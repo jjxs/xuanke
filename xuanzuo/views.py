@@ -117,8 +117,7 @@ class SeatApiView(APIView):
         try:
             user_obj = User.objects.get(pk=int(user_id))
         except User.DoesNotExist:
-            return Response({'message': '没有取到用户信息'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-        print(user_obj.metting.all())
+            return Response({'message': '没有取到用户信息, 授权之后才能使用'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
         UserMetting.objects.filter(user_id=int(user_id), metting_id=metting_obj.id)
         if UserMetting.objects.filter(user_id=int(user_id), metting_id=metting_obj.id):
             return Response({'message': '座位已经被使用'}, status=status.HTTP_504_GATEWAY_TIMEOUT)
