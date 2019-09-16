@@ -5,7 +5,7 @@ import datetime
 
 class Metting(models.Model):
     mettingName = models.CharField(max_length=100, verbose_name="会议名称", null=True, blank=True)
-    config = models.CharField(default="5,5,5,5,5", verbose_name="配置座位", help_text="配置座位")
+    config = models.CharField(default="5,5,5,5,5", max_length=200, verbose_name="配置座位", help_text="配置座位")
     result = models.CharField(editable=False, max_length=5000, verbose_name="结果集", null=True, blank=True,)
     time = models.DateTimeField(null=True, blank=True, verbose_name="会议开始时间")
     # row = models.IntegerField(blank=True, null=True, verbose_name="横座位数量", default=10)
