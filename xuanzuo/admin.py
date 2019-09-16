@@ -3,8 +3,7 @@ from openpyxl import Workbook
 # Register your models here.
 from .models import Metting, UserMetting, User
 from django.http import HttpResponse
-admin.site.register(Metting)
-admin.site.register(User)
+
 
 class ExportExcelMixin(object):
     def export_as_excel(self, request, queryset):
@@ -33,3 +32,15 @@ class UserMettingAdmin(admin.ModelAdmin, ExportExcelMixin):
     search_fields = ('user', 'metting')
     list_filter = ('user', 'metting')
     actions = ['export_as_excel']
+
+@admin.register(Metting)
+class MettingAdmin(admin.ModelAdmin):
+    fields = ('mettingName', 'config', 'time')
+    list_display = ('mettingName', 'time')
+    search_fields = ('mettingName', 'time')
+
+@admin.register(User)
+class MettingAdmin(admin.ModelAdmin):
+    fields = ('openid', 'username', 'email')
+    list_display = ('openid', 'username','email')
+    search_fields = ('username', 'email')
