@@ -116,7 +116,7 @@ class SeatApiView(APIView):
             return Response("该会议已删除", status.HTTP_404_NOT_FOUND)
         try:
             user_obj = User.objects.get(pk=int(user_id))
-        except User.DoesNotExist:
+        except (User.DoesNotExist, ValueError):
             return Response({'message': '没有取到用户信息, 授权之后才能使用'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
         UserMetting.objects.filter(user_id=int(user_id), metting_id=metting_obj.id)
         if UserMetting.objects.filter(user_id=int(user_id), metting_id=metting_obj.id):
