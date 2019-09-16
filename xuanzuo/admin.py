@@ -36,11 +36,11 @@ class UserMettingAdmin(admin.ModelAdmin, ExportExcelMixin):
 @admin.register(Metting)
 class MettingAdmin(admin.ModelAdmin):
     fields = ('mettingName', 'config', 'time')
-    list_display = ('mettingName', 'time')
+    list_display = ('mettingName', 'time','config')
     search_fields = ('mettingName', 'time')
 
 @admin.register(User)
 class MettingAdmin(admin.ModelAdmin):
     fields = ('openid', 'username', 'email')
-    list_display = ('openid', 'username','email')
+    list_display = ('username','openid','email')
     search_fields = ('username', 'email')
