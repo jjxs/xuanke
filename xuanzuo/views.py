@@ -20,7 +20,11 @@ class WechatLoginView(APIView):
 
     def post(self, request):
         # 前端发送code到后端,后端发送网络请求到微信服务器换取openid
-        code = request.data.get('code')
+        userInfo = request.data.get('userInfo')
+        userName = request.data.get('userName')
+
+        code = userInfo.get('code')
+
         if not code:
             return Response({'message': '缺少code'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -38,12 +42,10 @@ class WechatLoginView(APIView):
             user = User.objects.get(openid=openid)
         except Exception:
             # 微信用户第一次登陆,新建用户
-            username = request.data.get('nickName')
 
-            sex = request.data.get('gender')
-            avatar = request.data.get('avatarUrl')
-
-            user = User.objects.create(username=username, sex=sex, avatar=avatar, openid=openid)
+            sex = userInfo.get('gender')
+            avatar = userInfo.get('avatarUrl')
+            user = User.objects.create(username=userName, sex=sex, avatar=avatar, openid=openid)
             user.set_password(openid)
 
         # 手动签发jwt
