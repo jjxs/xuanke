@@ -9,5 +9,5 @@ def get_current_app_name(_file):
 
 
 class PrimaryBlogConfig(AppConfig):
-    name = VERBOSE_APP_NAME
+    name = get_current_app_name(__file__)
     verbose_name = VERBOSE_APP_NAME
