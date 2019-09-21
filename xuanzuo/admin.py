@@ -4,7 +4,7 @@ from openpyxl import Workbook
 from .models import Metting, UserMetting, User
 from django.http import HttpResponse
 
-
+admin.site.site_header = "超人罐头小程序后台"
 class ExportExcelMixin(object):
     def export_as_excel(self, request, queryset):
         meta = self.model._meta
