@@ -40,6 +40,8 @@ class UserMetting(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="用户")
     metting = models.ForeignKey(Metting, on_delete=models.CASCADE, verbose_name="会议")
     seat_num = models.IntegerField(verbose_name="座位号")
+    def __str__(self):
+        return self.metting
     class Meta:
         db_table = 'user_metting_relatinship'
         verbose_name = '用户/会议'
