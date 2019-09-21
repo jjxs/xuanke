@@ -28,21 +28,24 @@ class User(AbstractUser):
     openid = models.CharField(max_length=64, db_index=True, verbose_name='openid')
     metting = models.ManyToManyField(Metting, through='UserMetting')
 
-    def __str__(self):
-        return self.username
     class Meta:
         db_table = 'tb_users'
         verbose_name = '用户'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.username
 
 
 class UserMetting(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="用户")
     metting = models.ForeignKey(Metting, on_delete=models.CASCADE, verbose_name="会议")
     seat_num = models.IntegerField(verbose_name="座位号")
-    def __str__(self):
-        return self.metting.mettingName
+
     class Meta:
         db_table = 'user_metting_relatinship'
         verbose_name = '用户/会议'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.metting.mettingName

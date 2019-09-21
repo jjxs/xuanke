@@ -11,7 +11,7 @@ class ExportExcelMixin(object):
         field_names = [field.name for field in meta.fields]
 
         response = HttpResponse(content_type='application/msexcel')
-        response['Content-Disposition'] = 'attachment; filename={}.xlsx'.format(meta)
+        response['Content-Disposition'] = 'attachment; filename={}.xlsx'.format(str(meta))
         wb = Workbook()
         ws = wb.active
         ws.append(field_names)
