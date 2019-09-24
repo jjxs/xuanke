@@ -21,4 +21,4 @@ django-redis
 pycryptodome
 raven
 openpyxl
-sentry-sdk==0.12.1
+sentry-sdk==0.12.2
