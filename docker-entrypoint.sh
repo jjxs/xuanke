@@ -7,14 +7,14 @@ if [ "$1" = "start" ]; then
 	chown -R mysql:mysql /var/lib/mysql
 	service mysql start
 	mysql -uroot -e "CREATE DATABASE if not exists xuanke DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
-	mysql -uroot -e "UPDATE USER set password=passworD("123456") where user='root'";
+#	mysql -uroot -e "UPDATE USER set password=passworD("123456") where user='root'";
 #	mysql -uroot -e "CREATE USER xuanke@127.0.0.1 IDENTIFIED BY '123456'";
-  mysql -uroot -e "flush privileges";
-	mysql -uroot -e "GRANT ALL PRIVILEGES ON xuanke.* TO 'root'@'127.0.0.1';"
+#  mysql -uroot -e "flush privileges";
+#	mysql -uroot -e "GRANT ALL PRIVILEGES ON xuanke.* TO 'root'@'127.0.0.1';"
 #	mysql --one-database loonflownew < /opt/workflowdemo/loonflow.sql
-	service redis-server start
-	service nginx start
-	service supervisor start
+#	service redis-server start
+#	service nginx start
+#	service supervisor start
 	sleep inf & wait
 else
 	exec "$@"
