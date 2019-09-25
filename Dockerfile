@@ -10,7 +10,7 @@ RUN mkdir -p /var/log/web
 WORKDIR /opt
 RUN git clone https://github.com/jjxs/xuanke.git
 WORKDIR /opt/xuanke
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
 RUN python3 manage.py collectstatic
