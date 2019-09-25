@@ -33,8 +33,8 @@ RUN pip3 install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted
 
 #ADD nginx.conf /etc/nginx/nginx.conf
 #ADD supervisord.conf /etc/supervisor/supervisord.conf
-#ADD docker-entrypoint.sh /docker-entrypoint.sh
-#RUN chmod +x /docker-entrypoint.sh
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 #RUN cp -rf /opt/loonflow/static/* /opt/workflowdemo/static/
 #EXPOSE 80
 #EXPOSE 8000
