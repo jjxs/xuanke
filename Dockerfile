@@ -11,10 +11,10 @@ WORKDIR /opt
 RUN git clone https://github.com/jjxs/xuanke.git
 WORKDIR /opt/xuanke
 RUN pip3 install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
-RUN python3 manage.py collectstatic
-RUN python3 createsuperuser.py
+#RUN python3 manage.py makemigrations
+#RUN python3 manage.py migrate
+#RUN python3 manage.py collectstatic
+#RUN python3 createsuperuser.py
 
 #clone loonflow code
 #WORKDIR /opt
@@ -31,11 +31,11 @@ RUN python3 createsuperuser.py
 #RUN mysql -uroot -e "GRANT ALL PRIVILEGES ON loonflownew.* TO 'loonflownew'@'127.0.0.1';"
 #RUN mysql --one-database loonflownew < /opt/workflowdemo/loonflow.sql
 
-ADD nginx.conf /etc/nginx/nginx.conf
-ADD supervisord.conf /etc/supervisor/supervisord.conf
-ADD docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-RUN cp -rf /opt/loonflow/static/* /opt/workflowdemo/static/
-EXPOSE 80
-EXPOSE 8000
+#ADD nginx.conf /etc/nginx/nginx.conf
+#ADD supervisord.conf /etc/supervisor/supervisord.conf
+#ADD docker-entrypoint.sh /docker-entrypoint.sh
+#RUN chmod +x /docker-entrypoint.sh
+#RUN cp -rf /opt/loonflow/static/* /opt/workflowdemo/static/
+#EXPOSE 80
+#EXPOSE 8000
 CMD ["/docker-entrypoint.sh", "start"]
