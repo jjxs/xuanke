@@ -2,8 +2,8 @@ FROM ubuntu:latest
 LABEL maintainer 957990586@qq.com
 WORKDIR /opt
 RUN apt-get update -y
-RUN apt-get install -y mysql-server libmysqlclient-dev redis-server python3 python3-pip python3-dev git supervisor nginx
-RUN sed -i 's/bind 127.0.0.1 ::1/bind 127.0.0.1/g' /etc/redis/redis.conf
+RUN apt-get install -y mysql-server libmysqlclient-dev python3 python3-pip python3-dev git supervisor nginx
+#RUN sed -i 's/bind 127.0.0.1 ::1/bind 127.0.0.1/g' /etc/redis/redis.conf
 
 #clone workflowdemo code
 RUN mkdir -p /var/log/web

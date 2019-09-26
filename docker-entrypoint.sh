@@ -29,7 +29,7 @@ if [ "$1" = "start" ]; then
 	mysql -uroot -e "CREATE USER loonflownew@127.0.0.1 IDENTIFIED BY '123456'";
 	mysql -uroot -e "GRANT ALL PRIVILEGES ON loonflownew.* TO 'loonflownew'@'127.0.0.1';"
 #	mysql --one-database loonflownew < /opt/workflowdemo/loonflow.sql
-	service redis-server start
+#	service redis-server start
 	service nginx start
 	service supervisor start
 	sleep inf & wait
